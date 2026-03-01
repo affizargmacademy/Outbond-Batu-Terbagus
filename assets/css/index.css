@@ -34,7 +34,11 @@ body {
     width: 100%;
 }
 
-h1, h2, h3, h4, .font-heading {
+h1,
+h2,
+h3,
+h4,
+.font-heading {
     font-family: 'Outfit', sans-serif;
     font-weight: 700;
 }
@@ -152,10 +156,16 @@ nav {
     overflow: hidden;
 }
 
+.hero .container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 4rem;
+}
+
 .hero-content {
-    position: relative;
+    flex: 1;
     z-index: 10;
-    max-width: 650px;
 }
 
 .hero-title {
@@ -199,16 +209,12 @@ nav {
 }
 
 .hero-image {
-    position: absolute;
-    right: -10%;
-    top: 50%;
-    transform: translateY(-50%);
-    width: 55%;
-    height: 80%;
+    flex: 1;
+    height: 550px;
     background: url('../img/hero_outbound_batu.jpg') center/cover no-repeat;
-    border-radius: 40px;
+    border-radius: 80px 30px 80px 30px;
     box-shadow: var(--shadow);
-    z-index: 5;
+    position: relative;
 }
 
 /* Sections */
@@ -243,14 +249,14 @@ section {
     background: white;
     border-radius: 24px;
     overflow: hidden;
-    box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
     transition: var(--transition);
     border: 1px solid #f0f0f0;
 }
 
 .blog-card:hover {
     transform: translateY(-10px);
-    box-shadow: 0 15px 40px rgba(0,0,0,0.1);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
 }
 
 .blog-img {
@@ -296,6 +302,7 @@ section {
     margin-bottom: 1.5rem;
     display: -webkit-box;
     -webkit-line-clamp: 3;
+    line-clamp: 3;
     -webkit-box-orient: vertical;
     overflow: hidden;
 }
@@ -594,9 +601,17 @@ blockquote {
     gap: 0.5rem;
 }
 
-.share-wa { background: #25d366; }
-.share-fb { background: #1877f2; }
-.share-tw { background: #1da1f2; }
+.share-wa {
+    background: #25d366;
+}
+
+.share-fb {
+    background: #1877f2;
+}
+
+.share-tw {
+    background: #1da1f2;
+}
 
 /* Mobile Menu */
 .menu-toggle {
@@ -607,9 +622,12 @@ blockquote {
 
 /* Responsiveness */
 @media (max-width: 1024px) {
-    .hero-image {
-        right: -15%;
-        width: 60%;
+    .hero .container {
+        gap: 2rem;
+    }
+
+    .hero-title {
+        font-size: 3.2rem;
     }
 }
 
@@ -619,7 +637,8 @@ blockquote {
     }
 
     .nav-links {
-        display: none; /* Add JS to toggle */
+        display: none;
+        /* Add JS to toggle */
         position: absolute;
         top: 100%;
         left: 0;
@@ -639,14 +658,18 @@ blockquote {
         grid-template-columns: 1fr 1fr;
     }
 
+    .hero .container {
+        flex-direction: column;
+        text-align: center;
+    }
+
     .hero-image {
-        position: relative;
-        right: 0;
-        top: 0;
-        transform: none;
         width: 100%;
-        height: 400px;
-        margin-top: 3rem;
+        height: 350px;
+        order: -1;
+        /* Image on top for mobile */
+        margin-bottom: 2rem;
+        border-radius: 40px 15px 40px 15px;
     }
 
     .hero-content {
@@ -665,7 +688,7 @@ blockquote {
 
 @media (max-width: 480px) {
     .hero-title {
-        font-size: 2..5rem;
+        font-size: 2.5rem;
     }
 
     .footer-grid {
@@ -675,7 +698,7 @@ blockquote {
     .container {
         padding: 0 1.5rem;
     }
-    
+
     .blog-grid {
         grid-template-columns: 1fr;
     }
@@ -684,12 +707,14 @@ blockquote {
         font-size: 2rem;
     }
 
-    .floating-wa, .floating-up {
+    .floating-wa,
+    .floating-up {
         right: 20px;
     }
 
     /* Fixed mobile glitch: no horizontal scroll */
-    body, html {
+    body,
+    html {
         overflow-x: hidden;
         width: 100vw;
     }
